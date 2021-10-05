@@ -29,3 +29,7 @@ compressedsize = float(compressedline[19:-32])
 reduction = ((originalsize-compressedsize)/originalsize)*100
 
 print("Compression ratio : " + str(reduction) + "%")
+
+os.system("mv rawData.csv " + f)
+os.system("mv rawData.csv.tar.gz " + f + ".tar.gz")
+os.system("rm originalsize.txt compressedsize.txt")

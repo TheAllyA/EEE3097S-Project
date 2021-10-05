@@ -9,10 +9,4 @@ f = raw_input("\n Hello, user. "
 file = open(f, 'r')
 
 
-os.system("mv " + f + " original")
 os.system("tar xzf " + f)
-os.system("mv rawData.csv decompressed")
-string = os.system("cmp original decompressed")
-
-if string == 0 :
-        print("No difference between files")

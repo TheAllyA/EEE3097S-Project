@@ -10,7 +10,7 @@ file = open(f, 'r')
 
 
 os.system("mv " + f + " original")
-os.system("tar xzf " + f + ".tar.gz")
+os.system("tar xzf " + f)
 os.system("mv rawData.csv decompressed")
 string = os.system("cmp original decompressed")
 

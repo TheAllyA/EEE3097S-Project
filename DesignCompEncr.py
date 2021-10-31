@@ -1,5 +1,3 @@
-  GNU nano 3.2                                                                                                     CompEncr.py
-
 import os
 from cryptography.fernet import Fernet
 

@@ -1,11 +1,13 @@
+  GNU nano 3.2                                                                                                     CompEncr.py
+
 import os
 from cryptography.fernet import Fernet
 
-f = raw_input("\n Hello, user. "
+fR = input("\n Hello, user. "
     "\n \n Please type in the path to your file and press 'Enter': ")
-file = open(f, 'r')
+file = open(fR, 'r')
 
-os.system("mv " + f + " rawData.csv")
+os.system("mv " + fR + " rawData.csv")
 os.system("tar czf rawData.csv.tar.gz rawData.csv")
 
 #print("File size for original file is: ")
@@ -31,8 +33,8 @@ reduction = ((originalsize-compressedsize)/originalsize)*100
 
 print("Compression ratio : " + str(reduction) + "%")
 
-os.system("mv rawData.csv " + f)
-os.system("mv rawData.csv.tar.gz " + f + ".tar.gz")
+os.system("mv rawData.csv " + fR)
+#os.system("mv rawData.csv.tar.gz " + f + ".tar.gz")
 os.system("rm originalsize.txt compressedsize.txt")
 
 #    def key_create:
@@ -52,3 +54,26 @@ encrypted_file = f.encrypt(zipped)
 
 with open('finalEncrypt.csv.tar.gz','wb') as finalEncrypt:
     finalEncrypt.write(encrypted_file)
+
+
+with open('finalEncrypt.csv.tar.gz','rb') as e:
+    encrypted = e.read()
+
+decrypted_file = f.decrypt(encrypted)
+
+with open('finalDecrypt.csv.tar.gz','wb') as finalDecrypt:
+    finalDecrypt.write(decrypted_file)
+
+#f = raw_input("\n Hello, user. "
+#    "\n \n Please type in the path to your file and press 'Enter': ")
+#file = open(finalDecrypt, 'r')
+
+
+os.system("mv " + fR + " original")
+os.system("tar xzf finalDecrypt.csv.tar.gz")
+#os.system("mv finalDecrypt.csv rawData.csv")
+string = os.system("cmp original rawData.csv")
+
+if string == 0 :
+        print("No difference between files")
+
